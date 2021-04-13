@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>vue路由传参 | 狂妄的人有救,自卑的人没有救,认识自身,降伏自身,改变自身。</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="this.$router.push跳转1234567891011121314151617181920212223242526272829303132333435363738父组件中&lt;template&gt;	&lt;div class&#x3D;&quot;parent&quot;&gt;        &lt;li v-for&#x3D;&quot;detailItem in detail">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue路由传参">
+<meta property="og:url" content="http://yoursite.com/2020/04/28/vue%E8%B7%AF%E7%94%B1%E4%BC%A0%E5%8F%82/index.html">
+<meta property="og:site_name" content="狂妄的人有救,自卑的人没有救,认识自身,降伏自身,改变自身。">
+<meta property="og:description" content="this.$router.push跳转1234567891011121314151617181920212223242526272829303132333435363738父组件中&lt;template&gt;	&lt;div class&#x3D;&quot;parent&quot;&gt;        &lt;li v-for&#x3D;&quot;detailItem in detail">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-28T02:11:52.000Z">
+<meta property="article:modified_time" content="2021-04-13T12:38:26.895Z">
+<meta property="article:author" content="Mr Zhang">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="狂妄的人有救,自卑的人没有救,认识自身,降伏自身,改变自身。" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">狂妄的人有救,自卑的人没有救,认识自身,降伏自身,改变自身。</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-vue路由传参" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/28/vue%E8%B7%AF%E7%94%B1%E4%BC%A0%E5%8F%82/" class="article-date">
+  <time datetime="2020-04-28T02:11:52.000Z" itemprop="datePublished">2020-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue路由传参
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="this-router-push跳转"><a href="#this-router-push跳转" class="headerlink" title="this.$router.push跳转"></a>this.$router.push跳转</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">父组件中</span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div class&#x3D;&quot;parent&quot;&gt;</span><br><span class="line">        &lt;li v-for&#x3D;&quot;detailItem in detailList&quot; @click&#x3D;&quot;getDetail(detailItem.id)&quot;&gt;</span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default&#123;</span><br><span class="line">	data()&#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            msg:&quot;我是父组件&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods:&#123;</span><br><span class="line">        getDetail(id) &#123;</span><br><span class="line">            this.$router.push(&#123;&#x2F;&#x2F;直接调用$router.push 实现携带参数的跳转</span><br><span class="line">              path: &#96;&#x2F;detail&#x2F;$&#123;id&#125;&#96;,</span><br><span class="line">        	&#125;)</span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">对应路由配置：</span><br><span class="line">router&#x2F;index.js</span><br><span class="line">const routes &#x3D; [&#123;</span><br><span class="line">     path: &#39;&#x2F;detail&#x2F;:id&#39;,</span><br><span class="line">     name: &#39;detail&#39;,</span><br><span class="line">     component: detail</span><br><span class="line">&#125;]</span><br><span class="line"></span><br><span class="line">const router &#x3D; new VueRouter(&#123;</span><br><span class="line">  base: process.env.BASE_URL,</span><br><span class="line">  routes</span><br><span class="line">&#125;)</span><br><span class="line">export default router;</span><br><span class="line"></span><br><span class="line">对应子组件：</span><br><span class="line">this.$route.params.id</span><br></pre></td></tr></table></figure>
+
+<h5 id="父组件中：通过路由属性中的name来确定匹配的路由，通过params来传递参数。"><a href="#父组件中：通过路由属性中的name来确定匹配的路由，通过params来传递参数。" class="headerlink" title="父组件中：通过路由属性中的name来确定匹配的路由，通过params来传递参数。"></a>父组件中：通过路由属性中的name来确定匹配的路由，通过params来传递参数。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">父组件中</span><br><span class="line">this.$router.push(&#123;</span><br><span class="line">     name: &#39;detail&#39;,</span><br><span class="line">     params: &#123;</span><br><span class="line">          id: id</span><br><span class="line">     &#125;</span><br><span class="line">&#125;)</span><br><span class="line">对应路由配置：</span><br><span class="line">&#123;</span><br><span class="line">  path: &#39;&#x2F;describe&#39;,</span><br><span class="line">  name: &#39;detail&#39;,</span><br><span class="line">  component: detail</span><br><span class="line">&#125;</span><br><span class="line">对应子组件:</span><br><span class="line">this.$route.params.id</span><br></pre></td></tr></table></figure>
+
+<h5 id="父组件：使用path来匹配路由，然后通过query来传递参数这种情况下-query传递的参数会显示在url后面-id-？"><a href="#父组件：使用path来匹配路由，然后通过query来传递参数这种情况下-query传递的参数会显示在url后面-id-？" class="headerlink" title="父组件：使用path来匹配路由，然后通过query来传递参数这种情况下 query传递的参数会显示在url后面?id=？"></a>父组件：使用path来匹配路由，然后通过query来传递参数这种情况下 query传递的参数会显示在url后面?id=？</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">父组件中</span><br><span class="line">this.$router.push(&#123;</span><br><span class="line">  path: &#39;&#x2F;detail&#39;,</span><br><span class="line">  query: &#123;</span><br><span class="line">    id: id</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">对应路由配置：</span><br><span class="line">&#123;</span><br><span class="line">  path: &#39;&#x2F;detail&#39;,</span><br><span class="line">    name: &#39;detail&#39;,</span><br><span class="line">      component: detail</span><br><span class="line">&#125;</span><br><span class="line">对应子组件: </span><br><span class="line">this.$route.query.id</span><br></pre></td></tr></table></figure>
+
+<h5 id="params传参和query传参的差别："><a href="#params传参和query传参的差别：" class="headerlink" title="params传参和query传参的差别："></a>params传参和query传参的差别：</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.用法 ：query要用path来引入，params要用name来引入，接收参数都是类似的，</span><br><span class="line">分别是this.$route.query.name和this.$route.params.name</span><br><span class="line">(注意接收参数的时候，是$route而不是$router)</span><br><span class="line">2.显示 ：query类似于ajax中get传参，params则类似于post，通俗的讲：</span><br><span class="line">前者在浏览器地址栏中显示参数，后者则不显示。</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/28/vue%E8%B7%AF%E7%94%B1%E4%BC%A0%E5%8F%82/" data-id="ckng1scsf000au4uxech2haih" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/28/%E8%B7%A8%E5%9F%9F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          跨域
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/28/vue%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E4%BC%A0%E5%80%BC/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vue组件之间传值</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/13/vueBasicKnowledge/">vueBasicKnowledge</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/12/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8git%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6/">如何使用git上传本地文件</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/12/vuex%E9%85%8D%E5%90%88axios%E7%9A%84%E4%BD%BF%E7%94%A8/">vuex配合axios的使用</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/08/%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81/">函数节流</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/08/%E9%97%AD%E5%8C%85/">闭包</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Mr Zhang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

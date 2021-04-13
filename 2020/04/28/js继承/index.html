@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>js继承 | 狂妄的人有救,自卑的人没有救,认识自身,降伏自身,改变自身。</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="继承的方式有哪些提供个父类进行继承 123456789function SuperType(name) &amp;#123;    this.name &#x3D; name;    this.sexy &#x3D; [&quot;man&quot;, &quot;woman&quot;, &quot;unknow&quot;];    this.showName &#x3D; function() &amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js继承">
+<meta property="og:url" content="http://yoursite.com/2020/04/28/js%E7%BB%A7%E6%89%BF/index.html">
+<meta property="og:site_name" content="狂妄的人有救,自卑的人没有救,认识自身,降伏自身,改变自身。">
+<meta property="og:description" content="继承的方式有哪些提供个父类进行继承 123456789function SuperType(name) &amp;#123;    this.name &#x3D; name;    this.sexy &#x3D; [&quot;man&quot;, &quot;woman&quot;, &quot;unknow&quot;];    this.showName &#x3D; function() &amp;#">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2020/4/6/1714f366bb3420fc?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="article:published_time" content="2020-04-28T05:59:57.000Z">
+<meta property="article:modified_time" content="2021-04-13T12:38:26.895Z">
+<meta property="article:author" content="Mr Zhang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2020/4/6/1714f366bb3420fc?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+  
+    <link rel="alternate" href="/atom.xml" title="狂妄的人有救,自卑的人没有救,认识自身,降伏自身,改变自身。" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">狂妄的人有救,自卑的人没有救,认识自身,降伏自身,改变自身。</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-js继承" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/28/js%E7%BB%A7%E6%89%BF/" class="article-date">
+  <time datetime="2020-04-28T05:59:57.000Z" itemprop="datePublished">2020-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js继承
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="继承的方式有哪些"><a href="#继承的方式有哪些" class="headerlink" title="继承的方式有哪些"></a>继承的方式有哪些</h3><p>提供个父类进行继承</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function SuperType(name) &#123;</span><br><span class="line">    this.name &#x3D; name;</span><br><span class="line">    this.sexy &#x3D; [&quot;man&quot;, &quot;woman&quot;, &quot;unknow&quot;];</span><br><span class="line">    this.showName &#x3D; function() &#123;</span><br><span class="line">        console.log(name);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">SuperType.prototype.age &#x3D; 18;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<h5 id="原型继承"><a href="#原型继承" class="headerlink" title="原型继承"></a>原型继承</h5><ul>
+<li>利用原型让一个引用类型继承另外一个引用类型的属性和方法</li>
+<li>重点：新实例的原型等于父类的实例</li>
+<li>特点：<ul>
+<li>1.实例可继承的属性有：实例的构造函数的属性，父类构造函数属性，父类原型的属性。（新实例不会继承父类实例的属性！）</li>
+<li>2.基于原型链，既是父类的实例，也是子类的实例</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>1.无法实现多继承</li>
+<li>2.所有新实例都会共享父类实例的属性</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function SubType() &#123;</span><br><span class="line">    this.name &#x3D; &#39;coder&#39;;</span><br><span class="line">&#125;</span><br><span class="line">SubType.prototype &#x3D; new SuperType();</span><br><span class="line">var subFun &#x3D; new SubType();</span><br><span class="line">console.log(subFun.age) &#x2F;&#x2F; 18</span><br><span class="line">console.log(&#39;outer&#39;, subFun instanceof SuperType) &#x2F;&#x2F; true </span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<h5 id="构造函数继承"><a href="#构造函数继承" class="headerlink" title="构造函数继承"></a>构造函数继承</h5><ul>
+<li>重点：用call()和apply()将父类构造函数引入子类函数（在子类函数中做了父类函数的自执行（复制））</li>
+<li>特点：<ul>
+<li>1、只继承了父类构造函数的属性，没有继承父类原型的属性。</li>
+<li>2、解决了原型链继承缺点1、2、3。</li>
+<li>3、可以继承多个构造函数属性（call多个）。</li>
+<li>4、在子实例中可向父实例传参。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>1、只能继承父类构造函数的属性。</li>
+<li>2、无法实现构造函数的复用。（每次用每次都要重新调用）</li>
+<li>3、每个新实例都有父类构造函数的副本，臃肿。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function SubType() &#123;</span><br><span class="line">    SuperType.call(this);</span><br><span class="line">&#125;</span><br><span class="line">let instance1 &#x3D; new SubType();</span><br><span class="line">instance1.sexy.push(&quot;all&quot;);</span><br><span class="line">console.log(instance1.sexy); &#x2F;&#x2F; [&quot;man&quot;, &quot;woman&quot;, &quot;unknow&quot;, &quot;all&quot;]</span><br><span class="line">let instance2 &#x3D; new SubType();</span><br><span class="line">console.log(instance2.sexy); &#x2F;&#x2F; [&quot;man&quot;, &quot;woman&quot;, &quot;unknow&quot;]</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<h5 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h5><ul>
+<li>特点：利用原型链继承父类的原型属性和方法，利用构造函数继承实例属性和方法</li>
+<li>缺点：调用了两次父类构造函数，生成了俩实例</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function SubType(name) &#123;</span><br><span class="line">    SuperType.call(this, name);</span><br><span class="line">&#125;</span><br><span class="line">SubType.prototype &#x3D; new SuperType();</span><br><span class="line">var instance3 &#x3D; new SubType(&quot;newCoder&quot;);</span><br><span class="line">console.log(instance3.name) &#x2F;&#x2F; newcoder</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用-ES6-extends-进行继承"><a href="#使用-ES6-extends-进行继承" class="headerlink" title="使用 ES6 extends 进行继承"></a>使用 ES6 extends 进行继承</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class A &#123;</span><br><span class="line">    constructor(name, age) &#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">        this.age &#x3D; age;</span><br><span class="line">    &#125;</span><br><span class="line">    getName() &#123;</span><br><span class="line">        return this.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class B extends A &#123;</span><br><span class="line">    constructor(name, age) &#123;</span><br><span class="line">        super(name, age);</span><br><span class="line">        this.job &#x3D; &quot;IT&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    getJob() &#123;</span><br><span class="line">        return this.job;</span><br><span class="line">    &#125;</span><br><span class="line">    getNameAndJob() &#123;</span><br><span class="line">        return super.getName() + this.job;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var b &#x3D; new B(&quot;Tom&quot;, 20);</span><br><span class="line">console.log(b.name); &#x2F;&#x2F; Tom</span><br><span class="line">console.log(b.age); &#x2F;&#x2F; 20</span><br><span class="line">console.log(b.getName()); &#x2F;&#x2F; Tom</span><br><span class="line">console.log(b.getJob()); &#x2F;&#x2F; IT</span><br><span class="line">console.log(b.getNameAndJob()); &#x2F;&#x2F; TomIT</span><br></pre></td></tr></table></figure>
+
+<h3 id="new-的原理"><a href="#new-的原理" class="headerlink" title="new 的原理"></a>new 的原理</h3><ul>
+<li>在调用 new 的过程中会发生以下四件事：<ul>
+<li>新生成一个对象</li>
+<li>将构造函数的作用域赋值给新对象（即绑定新对象的 this）</li>
+<li>执行构造函数中的代码（即为这个新对象添加属性）</li>
+<li>返回新对象</li>
+</ul>
+</li>
+<li>一个简版的new</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function _new() &#123;</span><br><span class="line">	&#x2F;&#x2F; 创建一个新对象</span><br><span class="line">    let newObj &#x3D; &#123;&#125;;  </span><br><span class="line">    &#x2F;&#x2F; 获取构造函数</span><br><span class="line">    let Constructor &#x3D; Array.prototype.shift.call(arguments);</span><br><span class="line">    &#x2F;&#x2F; 连接新对象原型，新对象可以访问原型中的属性</span><br><span class="line">    newObj.__proto__ &#x3D; Constructor.prototype;</span><br><span class="line">    &#x2F;&#x2F; 执行构造函数，即绑定 this，并且为这个新对象添加属性</span><br><span class="line">    Constructor.apply(newObj, arguments);</span><br><span class="line">    &#x2F;&#x2F; 返回该对象</span><br><span class="line">    return newObj;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<h3 id="ES6-extends-的原理"><a href="#ES6-extends-的原理" class="headerlink" title="ES6 extends 的原理"></a>ES6 extends 的原理</h3><ul>
+<li>ES6 中是通过 class 关键字去定义类，经过 bable 编码之后其实还是通过构造函数去实现的，但是为了规范类的使用，ES6中是不允许直接调用 class 创建的类，因为编码之后会产生一个 <code>_classCallCheck</code> 阻止你直接调用，会抛出错误</li>
+<li>继承过程其实归根结底也是类似原型继承，过程请看下图</li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2020/4/6/1714f366bb3420fc?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
+<p>首先 <code>subClass.prototype.__proto__ = superClass.prototype</code> 保证了 <code>Child</code> 的实例可以访问到父类的属性，包括内部属性，以及原型属性。其次，<code>subClass.__proto__ = superClass</code>，保证了<code>Child.height</code> 也能访问到，也就是静态方法。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/28/js%E7%BB%A7%E6%89%BF/" data-id="ckng1scs80003u4ux20ax8yqi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/28/js%E9%97%AD%E5%8C%85/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          js闭包
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/28/%E8%B7%A8%E5%9F%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">跨域</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/13/vueBasicKnowledge/">vueBasicKnowledge</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/12/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8git%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6/">如何使用git上传本地文件</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/12/vuex%E9%85%8D%E5%90%88axios%E7%9A%84%E4%BD%BF%E7%94%A8/">vuex配合axios的使用</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/08/%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81/">函数节流</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/08/%E9%97%AD%E5%8C%85/">闭包</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Mr Zhang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

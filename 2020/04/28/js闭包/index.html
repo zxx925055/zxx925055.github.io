@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>js闭包 | 狂妄的人有救,自卑的人没有救,认识自身,降伏自身,改变自身。</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="闭包的原理和优劣以及使用闭包产生的原因 JS中存在全局作用域和函数作用域，当访问一个变量时，解释器会首先在当前作用域查找，如果没有找到，就去父作用域找，直到找到该变量或者不在父作用域中(也是作用域链的概念) 作用域中的每个子函数都会拷贝上级的作用域，形成一个完整的作用域链条 当前作用域中的变量存在着指向父级作用域的引用，便产生了闭包，下面用一段代码说明  123456789101112131415">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js闭包">
+<meta property="og:url" content="http://yoursite.com/2020/04/28/js%E9%97%AD%E5%8C%85/index.html">
+<meta property="og:site_name" content="狂妄的人有救,自卑的人没有救,认识自身,降伏自身,改变自身。">
+<meta property="og:description" content="闭包的原理和优劣以及使用闭包产生的原因 JS中存在全局作用域和函数作用域，当访问一个变量时，解释器会首先在当前作用域查找，如果没有找到，就去父作用域找，直到找到该变量或者不在父作用域中(也是作用域链的概念) 作用域中的每个子函数都会拷贝上级的作用域，形成一个完整的作用域链条 当前作用域中的变量存在着指向父级作用域的引用，便产生了闭包，下面用一段代码说明  123456789101112131415">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-28T06:02:52.000Z">
+<meta property="article:modified_time" content="2021-04-13T12:38:26.895Z">
+<meta property="article:author" content="Mr Zhang">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="狂妄的人有救,自卑的人没有救,认识自身,降伏自身,改变自身。" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">狂妄的人有救,自卑的人没有救,认识自身,降伏自身,改变自身。</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-js闭包" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/28/js%E9%97%AD%E5%8C%85/" class="article-date">
+  <time datetime="2020-04-28T06:02:52.000Z" itemprop="datePublished">2020-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js闭包
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="闭包的原理和优劣以及使用"><a href="#闭包的原理和优劣以及使用" class="headerlink" title="闭包的原理和优劣以及使用"></a>闭包的原理和优劣以及使用</h3><h5 id="闭包产生的原因"><a href="#闭包产生的原因" class="headerlink" title="闭包产生的原因"></a>闭包产生的原因</h5><ul>
+<li>JS中存在全局作用域和函数作用域，当访问一个变量时，解释器会首先在当前作用域查找，如果没有找到，就去父作用域找，直到找到该变量或者不在父作用域中(也是作用域链的概念)</li>
+<li>作用域中的每个子函数都会拷贝上级的作用域，形成一个完整的作用域链条</li>
+<li>当前作用域中的变量存在着指向父级作用域的引用，便产生了闭包，下面用一段代码说明</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; JS的变量逐级查找</span><br><span class="line">var a &#x3D; 1;</span><br><span class="line">function f1() &#123;</span><br><span class="line">	&#x2F;&#x2F; f1() 的作用域指向全局作用域(window)和它本身</span><br><span class="line">	var a &#x3D; 2</span><br><span class="line">	function f2() &#123;</span><br><span class="line">		&#x2F;&#x2F; f2的作用域指向全局作用域(window)、f1的作用域和它本身</span><br><span class="line">		var a &#x3D; 3;</span><br><span class="line">		console.log(a);&#x2F;&#x2F;3</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; fun会拿到父级作用域中的变量，输出2。</span><br><span class="line">&#x2F;&#x2F; 因为在当前环境中，含有对f2的引用 ,f2恰恰引用了window、f1和f2的作用域, 因此f2可以访问到f1的作用域的变量</span><br><span class="line">function f1() &#123;</span><br><span class="line">	var a &#x3D; 2</span><br><span class="line">	function f2() &#123;</span><br><span class="line">		console.log(a); &#x2F;&#x2F; 2</span><br><span class="line">	&#125;</span><br><span class="line">	return f2;</span><br><span class="line">&#125;</span><br><span class="line">var fun &#x3D; f1();</span><br><span class="line">fun();</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<h5 id="闭包的表现形式"><a href="#闭包的表现形式" class="headerlink" title="闭包的表现形式"></a>闭包的表现形式</h5><ul>
+<li>返回一个函数</li>
+<li>作为函数参数传递</li>
+<li>在定时器、事件监听、Ajax请求、跨窗口通信、Web Workers或者任何异步中，只要使用了回调函数，实际上就是在使用闭包</li>
+<li>立即执行函数表达式<ul>
+<li>保存了全局作用域和当前作用域，实际也是闭包</li>
+</ul>
+</li>
+</ul>
+<h5 id="闭包的优劣"><a href="#闭包的优劣" class="headerlink" title="闭包的优劣"></a>闭包的优劣</h5><ul>
+<li>优点<ul>
+<li>可以读取函数内部的变量</li>
+<li>可以让这些局部变量保存在内存中，实现变量数据共享。</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题</li>
+<li>闭包会在父函数外部，改变父函数内部变量的值。</li>
+</ul>
+</li>
+</ul>
+<h5 id="闭包的使用"><a href="#闭包的使用" class="headerlink" title="闭包的使用"></a>闭包的使用</h5><ul>
+<li>匿名自执行函数，因为外部无法引用其内部的变量，使用完会立即释放</li>
+<li>进行结果缓存</li>
+<li>进行封装工厂函数</li>
+<li>实现类的继承</li>
+<li>函数柯里化</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/28/js%E9%97%AD%E5%8C%85/" data-id="ckng1scs50001u4uxbctpa031" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/28/this%E7%9A%84%E6%8C%87%E5%90%91%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          this的指向问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/28/js%E7%BB%A7%E6%89%BF/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">js继承</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/13/vueBasicKnowledge/">vueBasicKnowledge</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/12/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8git%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6/">如何使用git上传本地文件</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/12/vuex%E9%85%8D%E5%90%88axios%E7%9A%84%E4%BD%BF%E7%94%A8/">vuex配合axios的使用</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/08/%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81/">函数节流</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/08/%E9%97%AD%E5%8C%85/">闭包</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Mr Zhang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

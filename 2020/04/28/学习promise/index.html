@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>学习promise | 狂妄的人有救,自卑的人没有救,认识自身,降伏自身,改变自身。</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Promise 的含义 （此含义摘自阮一峰前辈教程）Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了Promise对象。 所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习promise">
+<meta property="og:url" content="http://yoursite.com/2020/04/28/%E5%AD%A6%E4%B9%A0promise/index.html">
+<meta property="og:site_name" content="狂妄的人有救,自卑的人没有救,认识自身,降伏自身,改变自身。">
+<meta property="og:description" content="Promise 的含义 （此含义摘自阮一峰前辈教程）Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了Promise对象。 所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-28T07:14:14.000Z">
+<meta property="article:modified_time" content="2021-04-13T12:38:26.911Z">
+<meta property="article:author" content="Mr Zhang">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="狂妄的人有救,自卑的人没有救,认识自身,降伏自身,改变自身。" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">狂妄的人有救,自卑的人没有救,认识自身,降伏自身,改变自身。</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="postst-学习promise" class="article article-type-postst" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/28/%E5%AD%A6%E4%B9%A0promise/" class="article-date">
+  <time datetime="2020-04-28T07:14:14.000Z" itemprop="datePublished">2020-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      学习promise
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Promise-的含义-（此含义摘自阮一峰前辈教程）"><a href="#Promise-的含义-（此含义摘自阮一峰前辈教程）" class="headerlink" title="Promise 的含义 （此含义摘自阮一峰前辈教程）"></a>Promise 的含义 （此含义摘自阮一峰前辈教程）</h2><p>Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了<code>Promise</code>对象。</p>
+<p>所谓<code>Promise</code>，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。Promise 提供统一的 API，各种异步操作都可以用同样的方法进行处理。</p>
+<p><code>Promise</code>对象有以下两个特点。</p>
+<p>（1）对象的状态不受外界影响。<code>Promise</code>对象代表一个异步操作，有三种状态：<code>pending</code>（进行中）、<code>fulfilled</code>（已成功）和<code>rejected</code>（已失败）。只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。这也是<code>Promise</code>这个名字的由来，它的英语意思就是“承诺”，表示其他手段无法改变。</p>
+<p>（2）一旦状态改变，就不会再变，任何时候都可以得到这个结果。<code>Promise</code>对象的状态改变，只有两种可能：从<code>pending</code>变为<code>fulfilled</code>和从<code>pending</code>变为<code>rejected</code>。只要这两种情况发生，状态就凝固了，不会再变了，会一直保持这个结果，这时就称为 resolved（已定型）。如果改变已经发生了，你再对<code>Promise</code>对象添加回调函数，也会立即得到这个结果。这与事件（Event）完全不同，事件的特点是，如果你错过了它，再去监听，是得不到结果的。</p>
+<p>注意，为了行文方便，本章后面的<code>resolved</code>统一只指<code>fulfilled</code>状态，不包含<code>rejected</code>状态。</p>
+<p>有了<code>Promise</code>对象，就可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。此外，<code>Promise</code>对象提供统一的接口，使得控制异步操作更加容易。</p>
+<p><code>Promise</code>也有一些缺点。首先，无法取消<code>Promise</code>，一旦新建它就会立即执行，无法中途取消。其次，如果不设置回调函数，<code>Promise</code>内部抛出的错误，不会反应到外部。第三，当处于<code>pending</code>状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成）。</p>
+<p>如果某些事件不断地反复发生，一般来说，使用 <a href="https://nodejs.org/api/stream.html" target="_blank" rel="noopener">Stream</a> 模式是比部署<code>Promise</code>更好的选择。</p>
+<h5 id="promise封装ajax的基本使用"><a href="#promise封装ajax的基本使用" class="headerlink" title="promise封装ajax的基本使用"></a>promise封装ajax的基本使用</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//讲对象序列化成字符串</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">queryString</span>(<span class="params">param</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> parameters=<span class="string">""</span>;</span><br><span class="line">    <span class="keyword">if</span>(param ==&#123;&#125;)&#123;</span><br><span class="line">        <span class="keyword">return</span> parameters;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(item <span class="keyword">of</span> <span class="built_in">Object</span>.keys(param))&#123; 		</span><br><span class="line">        parameters+=item+<span class="string">"="</span>+param[item]+<span class="string">"&amp;"</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> parameters.substr(<span class="number">0</span>,parameters.length<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//封装ajax</span></span><br><span class="line"><span class="keyword">const</span> getJson =<span class="function"><span class="keyword">function</span>(<span class="params">method,url,async,param</span>)</span>&#123;</span><br><span class="line">	method = method.toUpperCase();</span><br><span class="line">    param = queryString(param);</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> xhr;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest)&#123;</span><br><span class="line">            xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(method==<span class="string">"GET"</span>)&#123;</span><br><span class="line">        	xhr.open(method,url+<span class="string">"?"</span>+param,<span class="keyword">async</span>);</span><br><span class="line">            xhr.send();</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            xhr.open(method,url,<span class="keyword">async</span>);</span><br><span class="line">            xhr.setRequestHeader(<span class="string">"Content-type"</span>,<span class="string">"application/x-www-form-urlencoded"</span>);</span><br><span class="line">            xhr.send(param);</span><br><span class="line">        &#125;</span><br><span class="line">        xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>.readyState == <span class="number">4</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="keyword">this</span>.status == <span class="number">200</span>)&#123;</span><br><span class="line">                    <span class="keyword">try</span>&#123;</span><br><span class="line">                        resolve(<span class="keyword">this</span>.responseText,<span class="keyword">this</span>);</span><br><span class="line">                    &#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">                      	reject(e);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    reject(&#123;<span class="attr">code</span>:<span class="keyword">this</span>.status,<span class="attr">response</span>:<span class="keyword">this</span>.response&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line">getJson(<span class="string">"post"</span>,<span class="string">'URl'</span>,<span class="literal">true</span>,&#123;<span class="attr">id</span>:<span class="number">1</span>,<span class="attr">text</span>:<span class="string">"ddd"</span>&#125;).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(res);</span><br><span class="line">&#125;).catch(<span class="function">(<span class="params">err</span>)=&gt;</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(err);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/28/%E5%AD%A6%E4%B9%A0promise/" data-id="ckng1sct1000hu4ux26ru3ubv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/29/js%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          js的运行机制
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/28/%E5%8E%9F%E7%94%9Fajax%E8%AE%B0%E5%BD%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">原生ajax复习</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/13/vueBasicKnowledge/">vueBasicKnowledge</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/12/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8git%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6/">如何使用git上传本地文件</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/12/vuex%E9%85%8D%E5%90%88axios%E7%9A%84%E4%BD%BF%E7%94%A8/">vuex配合axios的使用</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/08/%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81/">函数节流</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/08/%E9%97%AD%E5%8C%85/">闭包</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Mr Zhang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
